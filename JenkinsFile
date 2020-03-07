@@ -10,7 +10,7 @@ pipeline {
 		echo 'Setting up environment'
 		IMAGE="nodeJs"
 		IMAGE_NAME="nodeJs"
-		NEXUS_HOST="https://nexus.softsurve.com"
+		NEXUS_HOST="https://nexus.softsurve.com/repository/private/"
 		TAG=$MAJOR.$MINOR.BUILD_NUMBER
 	   }
 	}
@@ -29,6 +29,7 @@ pipeline {
 	    steps {
 		echo 'Publishing...'
 		sh "docker tag SIMAGE_NAME $NEXUS_HOST/IMAGE_NAME:$TAG"
+		sh "docker push $NEXUS_HOST/IMAGE_NAME:$TAG"
 	    }
 	}
         stage('Deploy') {
