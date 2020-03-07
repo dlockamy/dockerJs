@@ -1,0 +1,22 @@
+{
+  "name": "dockerjs",
+  "version": "1.0.0",
+  "description": "Dockerized node project template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlockamy/dockerJs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlockamy/dockerJs/issues"
+  },
+  "homepage": "https://github.com/dlockamy/dockerJs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

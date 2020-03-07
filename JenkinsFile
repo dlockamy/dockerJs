@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    environment { 
+        MAJOR=1
+	MINOR=0
+    }
+    stages {
+	stage('Build Properties') {
+	   steps {
+		echo 'Setting up environment'
+		IMAGE="nodeJs"
+		IMAGE_NAME="nodeJs"
+		NEXUS_HOST="https://nexus.softsurve.com"
+		TAG=$MAJOR.$MINOR.BUILD_NUMBER
+	   }
+	}
+        stage('Build') {
+            steps {
+                echo 'Building..'
+		sh "docker build -t $IMAGE_NAME ."
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+	stage('') {
+	    steps {
+		echo 'Publishing...'
+		sh "docker tag SIMAGE_NAME $NEXUS_HOST/IMAGE_NAME:$TAG"
+	    }
+	}
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
