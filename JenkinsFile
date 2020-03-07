@@ -7,11 +7,13 @@ pipeline {
     stages {
 	stage('Build Properties') {
 	   steps {
-		echo 'Setting up environment'
-		IMAGE="nodeJs"
-		IMAGE_NAME="nodeJs"
-		NEXUS_HOST="https://nexus.softsurve.com/repository/private/"
-		TAG=$MAJOR.$MINOR.BUILD_NUMBER
+		script {
+		    echo 'Setting up environment'
+		    IMAGE="nodeJs"
+		    IMAGE_NAME="nodeJs"
+		    NEXUS_HOST="https://nexus.softsurve.com/repository/private/"
+		    TAG=$MAJOR.$MINOR.BUILD_NUMBER
+		}
 	   }
 	}
         stage('Build') {
